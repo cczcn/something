@@ -1,0 +1,5 @@
+/home/ccz/gitSpace/someting/CMakeFiles/edit_cache.dir
+/home/ccz/gitSpace/someting/CMakeFiles/rebuild_cache.dir
+/home/ccz/gitSpace/someting/src/CMakeFiles/edit_cache.dir
+/home/ccz/gitSpace/someting/src/CMakeFiles/rebuild_cache.dir
+/home/ccz/gitSpace/someting/src/CMakeFiles/run.dir
