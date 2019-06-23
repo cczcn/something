@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ccz/gitSpace/someting
+CMAKE_SOURCE_DIR = /home/ccz/gitSpace/something
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ccz/gitSpace/someting
+CMAKE_BINARY_DIR = /home/ccz/gitSpace/something
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/run.dir/depend.make
@@ -57,57 +57,86 @@ include src/CMakeFiles/run.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/run.dir/flags.make
 
-src/CMakeFiles/run.dir/hellotest.cpp.o: src/CMakeFiles/run.dir/flags.make
-src/CMakeFiles/run.dir/hellotest.cpp.o: src/hellotest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccz/gitSpace/someting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/run.dir/hellotest.cpp.o"
-	cd /home/ccz/gitSpace/someting/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/run.dir/hellotest.cpp.o -c /home/ccz/gitSpace/someting/src/hellotest.cpp
+src/CMakeFiles/run.dir/sensor.cpp.o: src/CMakeFiles/run.dir/flags.make
+src/CMakeFiles/run.dir/sensor.cpp.o: src/sensor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccz/gitSpace/something/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/run.dir/sensor.cpp.o"
+	cd /home/ccz/gitSpace/something/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/run.dir/sensor.cpp.o -c /home/ccz/gitSpace/something/src/sensor.cpp
 
-src/CMakeFiles/run.dir/hellotest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/run.dir/hellotest.cpp.i"
-	cd /home/ccz/gitSpace/someting/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccz/gitSpace/someting/src/hellotest.cpp > CMakeFiles/run.dir/hellotest.cpp.i
+src/CMakeFiles/run.dir/sensor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/run.dir/sensor.cpp.i"
+	cd /home/ccz/gitSpace/something/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccz/gitSpace/something/src/sensor.cpp > CMakeFiles/run.dir/sensor.cpp.i
 
-src/CMakeFiles/run.dir/hellotest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/run.dir/hellotest.cpp.s"
-	cd /home/ccz/gitSpace/someting/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccz/gitSpace/someting/src/hellotest.cpp -o CMakeFiles/run.dir/hellotest.cpp.s
+src/CMakeFiles/run.dir/sensor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/run.dir/sensor.cpp.s"
+	cd /home/ccz/gitSpace/something/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccz/gitSpace/something/src/sensor.cpp -o CMakeFiles/run.dir/sensor.cpp.s
 
-src/CMakeFiles/run.dir/hellotest.cpp.o.requires:
+src/CMakeFiles/run.dir/sensor.cpp.o.requires:
 
-.PHONY : src/CMakeFiles/run.dir/hellotest.cpp.o.requires
+.PHONY : src/CMakeFiles/run.dir/sensor.cpp.o.requires
 
-src/CMakeFiles/run.dir/hellotest.cpp.o.provides: src/CMakeFiles/run.dir/hellotest.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/hellotest.cpp.o.provides.build
-.PHONY : src/CMakeFiles/run.dir/hellotest.cpp.o.provides
+src/CMakeFiles/run.dir/sensor.cpp.o.provides: src/CMakeFiles/run.dir/sensor.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensor.cpp.o.provides.build
+.PHONY : src/CMakeFiles/run.dir/sensor.cpp.o.provides
 
-src/CMakeFiles/run.dir/hellotest.cpp.o.provides.build: src/CMakeFiles/run.dir/hellotest.cpp.o
+src/CMakeFiles/run.dir/sensor.cpp.o.provides.build: src/CMakeFiles/run.dir/sensor.cpp.o
+
+
+src/CMakeFiles/run.dir/sensorTest.cpp.o: src/CMakeFiles/run.dir/flags.make
+src/CMakeFiles/run.dir/sensorTest.cpp.o: src/sensorTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccz/gitSpace/something/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/run.dir/sensorTest.cpp.o"
+	cd /home/ccz/gitSpace/something/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/run.dir/sensorTest.cpp.o -c /home/ccz/gitSpace/something/src/sensorTest.cpp
+
+src/CMakeFiles/run.dir/sensorTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/run.dir/sensorTest.cpp.i"
+	cd /home/ccz/gitSpace/something/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccz/gitSpace/something/src/sensorTest.cpp > CMakeFiles/run.dir/sensorTest.cpp.i
+
+src/CMakeFiles/run.dir/sensorTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/run.dir/sensorTest.cpp.s"
+	cd /home/ccz/gitSpace/something/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccz/gitSpace/something/src/sensorTest.cpp -o CMakeFiles/run.dir/sensorTest.cpp.s
+
+src/CMakeFiles/run.dir/sensorTest.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/run.dir/sensorTest.cpp.o.requires
+
+src/CMakeFiles/run.dir/sensorTest.cpp.o.provides: src/CMakeFiles/run.dir/sensorTest.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensorTest.cpp.o.provides.build
+.PHONY : src/CMakeFiles/run.dir/sensorTest.cpp.o.provides
+
+src/CMakeFiles/run.dir/sensorTest.cpp.o.provides.build: src/CMakeFiles/run.dir/sensorTest.cpp.o
 
 
 # Object files for target run
 run_OBJECTS = \
-"CMakeFiles/run.dir/hellotest.cpp.o"
+"CMakeFiles/run.dir/sensor.cpp.o" \
+"CMakeFiles/run.dir/sensorTest.cpp.o"
 
 # External object files for target run
 run_EXTERNAL_OBJECTS =
 
-src/run: src/CMakeFiles/run.dir/hellotest.cpp.o
+src/run: src/CMakeFiles/run.dir/sensor.cpp.o
+src/run: src/CMakeFiles/run.dir/sensorTest.cpp.o
 src/run: src/CMakeFiles/run.dir/build.make
+src/run: /usr/lib/x86_64-linux-gnu/libboost_system.so
+src/run: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 src/run: src/CMakeFiles/run.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccz/gitSpace/someting/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable run"
-	cd /home/ccz/gitSpace/someting/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/run.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccz/gitSpace/something/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable run"
+	cd /home/ccz/gitSpace/something/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/run.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/run.dir/build: src/run
 
 .PHONY : src/CMakeFiles/run.dir/build
 
-src/CMakeFiles/run.dir/requires: src/CMakeFiles/run.dir/hellotest.cpp.o.requires
+src/CMakeFiles/run.dir/requires: src/CMakeFiles/run.dir/sensor.cpp.o.requires
+src/CMakeFiles/run.dir/requires: src/CMakeFiles/run.dir/sensorTest.cpp.o.requires
 
 .PHONY : src/CMakeFiles/run.dir/requires
 
 src/CMakeFiles/run.dir/clean:
-	cd /home/ccz/gitSpace/someting/src && $(CMAKE_COMMAND) -P CMakeFiles/run.dir/cmake_clean.cmake
+	cd /home/ccz/gitSpace/something/src && $(CMAKE_COMMAND) -P CMakeFiles/run.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/run.dir/clean
 
 src/CMakeFiles/run.dir/depend:
-	cd /home/ccz/gitSpace/someting && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccz/gitSpace/someting /home/ccz/gitSpace/someting/src /home/ccz/gitSpace/someting /home/ccz/gitSpace/someting/src /home/ccz/gitSpace/someting/src/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ccz/gitSpace/something && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccz/gitSpace/something /home/ccz/gitSpace/something/src /home/ccz/gitSpace/something /home/ccz/gitSpace/something/src /home/ccz/gitSpace/something/src/CMakeFiles/run.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/run.dir/depend
 

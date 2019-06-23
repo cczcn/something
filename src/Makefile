@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ccz/gitSpace/someting
+CMAKE_SOURCE_DIR = /home/ccz/gitSpace/something
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ccz/gitSpace/someting
+CMAKE_BINARY_DIR = /home/ccz/gitSpace/something
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/ccz/gitSpace/someting && $(CMAKE_COMMAND) -E cmake_progress_start /home/ccz/gitSpace/someting/CMakeFiles /home/ccz/gitSpace/someting/src/CMakeFiles/progress.marks
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccz/gitSpace/someting/CMakeFiles 0
+	cd /home/ccz/gitSpace/something && $(CMAKE_COMMAND) -E cmake_progress_start /home/ccz/gitSpace/something/CMakeFiles /home/ccz/gitSpace/something/src/CMakeFiles/progress.marks
+	cd /home/ccz/gitSpace/something && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ccz/gitSpace/something/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/ccz/gitSpace/something && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/ccz/gitSpace/something && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/ccz/gitSpace/something && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ccz/gitSpace/someting && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ccz/gitSpace/something && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/run.dir/rule:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/run.dir/rule
+	cd /home/ccz/gitSpace/something && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/run.dir/rule
 .PHONY : src/CMakeFiles/run.dir/rule
 
 # Convenience name for target.
@@ -122,35 +122,62 @@ run: src/CMakeFiles/run.dir/rule
 
 # fast build rule for target.
 run/fast:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/build
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/build
 .PHONY : run/fast
 
-hellotest.o: hellotest.cpp.o
+sensor.o: sensor.cpp.o
 
-.PHONY : hellotest.o
+.PHONY : sensor.o
 
 # target to build an object file
-hellotest.cpp.o:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/hellotest.cpp.o
-.PHONY : hellotest.cpp.o
+sensor.cpp.o:
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensor.cpp.o
+.PHONY : sensor.cpp.o
 
-hellotest.i: hellotest.cpp.i
+sensor.i: sensor.cpp.i
 
-.PHONY : hellotest.i
+.PHONY : sensor.i
 
 # target to preprocess a source file
-hellotest.cpp.i:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/hellotest.cpp.i
-.PHONY : hellotest.cpp.i
+sensor.cpp.i:
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensor.cpp.i
+.PHONY : sensor.cpp.i
 
-hellotest.s: hellotest.cpp.s
+sensor.s: sensor.cpp.s
 
-.PHONY : hellotest.s
+.PHONY : sensor.s
 
 # target to generate assembly for a file
-hellotest.cpp.s:
-	cd /home/ccz/gitSpace/someting && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/hellotest.cpp.s
-.PHONY : hellotest.cpp.s
+sensor.cpp.s:
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensor.cpp.s
+.PHONY : sensor.cpp.s
+
+sensorTest.o: sensorTest.cpp.o
+
+.PHONY : sensorTest.o
+
+# target to build an object file
+sensorTest.cpp.o:
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensorTest.cpp.o
+.PHONY : sensorTest.cpp.o
+
+sensorTest.i: sensorTest.cpp.i
+
+.PHONY : sensorTest.i
+
+# target to preprocess a source file
+sensorTest.cpp.i:
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensorTest.cpp.i
+.PHONY : sensorTest.cpp.i
+
+sensorTest.s: sensorTest.cpp.s
+
+.PHONY : sensorTest.s
+
+# target to generate assembly for a file
+sensorTest.cpp.s:
+	cd /home/ccz/gitSpace/something && $(MAKE) -f src/CMakeFiles/run.dir/build.make src/CMakeFiles/run.dir/sensorTest.cpp.s
+.PHONY : sensorTest.cpp.s
 
 # Help Target
 help:
@@ -161,9 +188,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... run"
-	@echo "... hellotest.o"
-	@echo "... hellotest.i"
-	@echo "... hellotest.s"
+	@echo "... sensor.o"
+	@echo "... sensor.i"
+	@echo "... sensor.s"
+	@echo "... sensorTest.o"
+	@echo "... sensorTest.i"
+	@echo "... sensorTest.s"
 .PHONY : help
 
 
@@ -175,6 +205,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ccz/gitSpace/someting && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ccz/gitSpace/something && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

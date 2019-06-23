@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ccz/gitSpace/someting/include 
+CXX_INCLUDES = -I/home/ccz/gitSpace/something/include 
 
