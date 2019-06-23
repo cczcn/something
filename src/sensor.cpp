@@ -40,7 +40,7 @@ float sensor::quaternion_read(){
     // sp.set_option(boost::asio::serial_port::character_size(8));
     if(fd){
         int read_len;
-        char buf[256];
+        char* buf = new char[256];
         int s_flag;
         while(1){
                 int next=0;
@@ -54,10 +54,10 @@ float sensor::quaternion_read(){
                         int Q0,Q1,Q2,Q3;
                         float Q0F,Q1F,Q2F,Q3F;
                         unsigned char sum=0;
-                        Q0        =((0xff&(unsigned char)buf[s_flag+3])<<8)|(0xff&(unsigned char)buf[s_flag+2]);
-                        Q1        =((0xff&(unsigned char)buf[s_flag+5])<<8)|(0xff&(unsigned char)buf[s_flag+4]);
-                        Q2        =((0xff&(unsigned char)buf[s_flag+7])<<8)|(0xff&(unsigned char)buf[s_flag+6]);
-                        Q3        =((0xff&(unsigned char)buf[s_flag+9])<<8)|(0xff&(unsigned char)buf[s_flag+8]);
+                        Q0        =((0xff&(unsigned char)buf[s_flag+next+3])<<8)|(0xff&(unsigned char)buf[s_flag+next+2]);
+                        Q1        =((0xff&(unsigned char)buf[s_flag+next+5])<<8)|(0xff&(unsigned char)buf[s_flag+next+4]);
+                        Q2        =((0xff&(unsigned char)buf[s_flag+next+7])<<8)|(0xff&(unsigned char)buf[s_flag+next+6]);
+                        Q3        =((0xff&(unsigned char)buf[s_flag+next+9])<<8)|(0xff&(unsigned char)buf[s_flag+next+8]);
 
                         if(Q0&0x8000)	Q0 = Q0-0xffff;
                         if(Q1&0x8000)	Q1 = Q1-0xffff;
@@ -75,6 +75,7 @@ float sensor::quaternion_read(){
                              sum += (unsigned char)buf[s_flag+next+i];
                         }
                         // if(sum == buf[s_flag+next+10]){
+                            delete buf;
                             return qua_max;                        
                         // }   
                     }
