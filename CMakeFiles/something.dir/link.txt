@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/something.dir/src/hellotest.cpp.o  -o something 
