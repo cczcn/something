@@ -35,7 +35,6 @@ int main(const int agrc, char** argv){
     {
         float q1 = imu_1.quaternion_read();
         float q2 = imu_2.quaternion_read();
-        cout  <<"1: "<<q1 <<"2: "<<endl;
     }
     
 }
