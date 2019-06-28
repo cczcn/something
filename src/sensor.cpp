@@ -21,6 +21,7 @@
 #include <sys/stat.h>
 
 #include <fcntl.h>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -33,9 +34,27 @@ int search(char* list,int n,unsigned char x){
     return -1;
 }
 
+sensor::sensor(char* devPath):outfile(0),dev_path(devPath),quaternion(4,0){
+        dev_=std::string(dev_path);
+    }
+
+int sensor::outToFile(char* out_){
+    outF.open(out_,ios::app);
+    if(!outF.is_open()){
+        perror("errout");
+        cout << "Output File Open Fail."<< endl;
+        return 1;
+    }
+    else{
+        cout << "Output to file >>"<<endl;
+        outfile = 1;
+    }
+    return 0;
+}
+
 int sensor::devOpen(){
     fd = open(dev_path,O_RDONLY );
-    if(!fd){
+    if(fd==-1){
         perror("errno");
         return 1;
     }
@@ -52,6 +71,9 @@ float sensor::quaternion_read(){
     // sp.set_option(boost::asio::serial_port::parity());
     // sp.set_option(boost::asio::serial_port::stop_bits());
     // sp.set_option(boost::asio::serial_port::character_size(8));
+    struct timeval tv,tv_ori;
+    gettimeofday(&tv_ori,NULL);
+    unsigned long long now_time =  (unsigned long long)tv_ori.tv_sec*1000+(unsigned long long)tv_ori.tv_usec/1000;
     std::string read;
     int start_flag;
     if(fd){
@@ -88,7 +110,10 @@ float sensor::quaternion_read(){
                         //      sum += (unsigned char)buf[s_flag+next+i];
                         // }
                         input.erase(0,start_flag+11);
-                        std::cout<<dev_<<"\t"<<qua_max<<std::endl;
+                        if(outfile)
+                            outF<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time<<endl;
+                        else
+                            std::cout<<"\t"<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time <<endl;
                 }else {
                     if(input.length()>=start_flag+11)
                         input.erase(0,start_flag+1);

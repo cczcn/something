@@ -35,6 +35,8 @@ sys/stat.h
 -
 fcntl.h
 -
+sys/time.h
+-
 
 /home/ccz/gitSpace/something/src/sensorTest.cpp
 sensor.h
