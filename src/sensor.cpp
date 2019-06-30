@@ -34,8 +34,7 @@ int search(char* list,int n,unsigned char x){
     return -1;
 }
 
-sensor::sensor(char* devPath):outfile(0),dev_path(devPath),quaternion(4,0){
-        dev_=std::string(dev_path);
+sensor::sensor():outfile(0),quaternion(4,0){
     }
 
 int sensor::outToFile(char* out_){
@@ -52,15 +51,15 @@ int sensor::outToFile(char* out_){
     return 0;
 }
 
-int sensor::devOpen(){
-    fd = open(dev_path,O_RDONLY );
+int sensor::devOpen(char* devPath){
+    fd = open(devPath,O_RDONLY );
     if(fd==-1){
         perror("errno");
-        return 1;
+        return -1;
     }
     else
         cout << "Open dev successed." << endl;
-    return 0;
+    return 1;
 }
 
 float sensor::quaternion_read(){
@@ -78,6 +77,7 @@ float sensor::quaternion_read(){
     int start_flag;
     if(fd){
         // int read_len=read(buf,1,110,fd);
+        //cout<<"fd:"<<fd<<endl;
         int read_len=::read(fd,buf,110);
         // std::cout<<"read len"<<read_len<<std::endl;//64
         buf[read_len-1]='\0';
@@ -106,9 +106,13 @@ float sensor::quaternion_read(){
 
                         quaternion = {Q0F,Q1F,Q2F,Q3F};
                         qua_max = max(Q0F,max(Q1F,max(Q2F,Q3F)));
-                        // for(int i=0;i<10;++i){
-                        //      sum += (unsigned char)buf[s_flag+next+i];
-                        // }
+                        
+                        // for(int i=0;i<10;++i)
+                        //      sum += (unsigned char)buf[start_flag+i];
+                        
+                        // if(sum != (unsigned char)buf[start_flag+10])
+                        //     continue;
+
                         input.erase(0,start_flag+11);
                         if(outfile)
                             outF<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time<<endl;
@@ -123,57 +127,12 @@ float sensor::quaternion_read(){
             }else 
                 input.clear();
         }
-
-    }else{
+    }
+    else{
         std::cout<<"error fd"<<std::endl;
     }
 
+
     return 0;
-    // if(fd){
-    //     int read_len;
-    //     int s_flag;
-    //     while(1){
-    //             int next=0;
-    //             read_len = fread(buf,1,256,fd);
-                
-    //             cout <<"1"<<endl;
-    //             while(read_len-next >= 11){ 
-    //                 s_flag = search(buf+next,sizeof(buf)/sizeof(char)-next,0x55);
-    //                 cout << "s_f:" <<s_flag <<endl;
-    //                 if(s_flag != -1  && buf[s_flag+next+10] && buf[s_flag+next+1] == 0x59 ){                 
-    //                     cout <<"2"<<endl;                        
-    //                     int Q0,Q1,Q2,Q3;
-    //                     float Q0F,Q1F,Q2F,Q3F;
-    //                     unsigned char sum=0;
-    //                     Q0        =((0xff&(unsigned char)buf[s_flag+next+3])<<8)|(0xff&(unsigned char)buf[s_flag+next+2]);
-    //                     Q1        =((0xff&(unsigned char)buf[s_flag+next+5])<<8)|(0xff&(unsigned char)buf[s_flag+next+4]);
-    //                     Q2        =((0xff&(unsigned char)buf[s_flag+next+7])<<8)|(0xff&(unsigned char)buf[s_flag+next+6]);
-    //                     Q3        =((0xff&(unsigned char)buf[s_flag+next+9])<<8)|(0xff&(unsigned char)buf[s_flag+next+8]);
 
-    //                     if(Q0&0x8000)	Q0 = Q0-0xffff;
-    //                     if(Q1&0x8000)	Q1 = Q1-0xffff;
-    //                     if(Q2&0x8000)	Q2 = Q2-0xffff;
-    //                     if(Q3&0x8000)	Q3 = Q3-0xffff;
-
-    //                     Q0F = (float)Q0/32768;
-    //                     Q1F = (float)Q1/32768;
-    //                     Q2F = (float)Q2/32768;
-    //                     Q3F = (float)Q3/32768;
-
-    //                     quaternion = {Q0F,Q1F,Q2F,Q3F};
-    //                     qua_max = max(Q0F,max(Q1F,max(Q2F,Q3F)));
-    //                     for(int i=0;i<10;++i){
-    //                          sum += (unsigned char)buf[s_flag+next+i];
-    //                     }
-    //                     // if(sum == buf[s_flag+next+10]){
-    //                         return qua_max;                        
-    //                     // }   
-    //                 }
-    //                 next+=(s_flag+11);
-    //                 if(s_flag == -1)
-    //                     break;
-    //             }
-    //     }
-    // }
-    // return 0;
 }

@@ -8,11 +8,11 @@
 
 class sensor{
 public:
-    explicit sensor(char* devPath);
+    sensor();
     int outToFile(char* out_);
     ~sensor(){}
     float quaternion_read();
-    int devOpen();
+    int devOpen(char* devPath);
 private:
     char* dev_path;
     int outfile;

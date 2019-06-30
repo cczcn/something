@@ -1,1 +1,1 @@
-/usr/bin/c++      CMakeFiles/run.dir/sensor.cpp.o CMakeFiles/run.dir/sensorTest.cpp.o  -o run /usr/lib/x86_64-linux-gnu/libboost_system.so /usr/lib/x86_64-linux-gnu/libboost_filesystem.so 
+/usr/bin/c++      CMakeFiles/run.dir/sensor.cpp.o CMakeFiles/run.dir/sensorTest.cpp.o  -o run -lpthread /usr/lib/x86_64-linux-gnu/libboost_system.so /usr/lib/x86_64-linux-gnu/libboost_filesystem.so 
