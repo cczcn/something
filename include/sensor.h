@@ -16,15 +16,15 @@ public:
 private:
     char* dev_path;
     int outfile;
-    std::string dev_;
+    unsigned int error_num;
+    unsigned int sum_num;
+    float error_rate;
     std::vector<float> quaternion;
     float qua_max;
-    // int next;
     std::ofstream outF;
     int fd;
     char buf[256];
     std::string input;
-    // int serialOpen();
 };
 
 #endif

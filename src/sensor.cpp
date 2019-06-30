@@ -34,7 +34,7 @@ int search(char* list,int n,unsigned char x){
     return -1;
 }
 
-sensor::sensor():outfile(0),quaternion(4,0){
+sensor::sensor():outfile(0),quaternion(4,0),sum_num(0),error_num(0){
     }
 
 int sensor::outToFile(char* out_){
@@ -84,41 +84,43 @@ float sensor::quaternion_read(){
         input+=std::string(buf);
         while(input.length()>=11){
             start_flag=input.find(0x55);
-            if(start_flag!=std::string::npos){
-                if(input[start_flag+1]==0x59){                     
+            if(start_flag!=std::string::npos && start_flag+11!=std::string::npos){
+                if(input[start_flag+1]==0x59){ 
+                        ++sum_num;                    
                         int Q0,Q1,Q2,Q3;
                         float Q0F,Q1F,Q2F,Q3F;
-                        unsigned char sum=0;
-                        Q0        =((0xff&(unsigned char)input[start_flag+3])<<8)|(0xff&(unsigned char)input[start_flag+2]);
-                        Q1        =((0xff&(unsigned char)input[start_flag+5])<<8)|(0xff&(unsigned char)input[start_flag+4]);
-                        Q2        =((0xff&(unsigned char)input[start_flag+7])<<8)|(0xff&(unsigned char)input[start_flag+6]);
-                        Q3        =((0xff&(unsigned char)input[start_flag+9])<<8)|(0xff&(unsigned char)input[start_flag+8]);
+                        unsigned char sum=0x00;
+                        Q0  =((0xff&(unsigned char)input[start_flag+3])<<8)|(0xff&(unsigned char)input[start_flag+2]);
+                        Q1  =((0xff&(unsigned char)input[start_flag+5])<<8)|(0xff&(unsigned char)input[start_flag+4]);
+                        Q2  =((0xff&(unsigned char)input[start_flag+7])<<8)|(0xff&(unsigned char)input[start_flag+6]);
+                        Q3  =((0xff&(unsigned char)input[start_flag+9])<<8)|(0xff&(unsigned char)input[start_flag+8]);
 
-                        if(Q0&0x8000)	Q0 = Q0-0xffff;
-                        if(Q1&0x8000)	Q1 = Q1-0xffff;
-                        if(Q2&0x8000)	Q2 = Q2-0xffff;
-                        if(Q3&0x8000)	Q3 = Q3-0xffff;
-
-                        Q0F = (float)Q0/32768;
-                        Q1F = (float)Q1/32768;
-                        Q2F = (float)Q2/32768;
-                        Q3F = (float)Q3/32768;
-
-                        quaternion = {Q0F,Q1F,Q2F,Q3F};
-                        qua_max = max(Q0F,max(Q1F,max(Q2F,Q3F)));
+                        for(int i=0;i<10;++i)
+                            sum += (unsigned char)buf[start_flag+i];
                         
-                        // for(int i=0;i<10;++i)
-                        //      sum += (unsigned char)buf[start_flag+i];
-                        
-                        // if(sum != (unsigned char)buf[start_flag+10])
-                        //     continue;
+                        if(sum != (unsigned char)buf[start_flag+10]){
+                            ++error_num;  
+                        }else{
+                            if(Q0&0x8000)	Q0 = Q0-0xffff;
+                            if(Q1&0x8000)	Q1 = Q1-0xffff;
+                            if(Q2&0x8000)	Q2 = Q2-0xffff;
+                            if(Q3&0x8000)	Q3 = Q3-0xffff;
 
-                        input.erase(0,start_flag+11);
-                        if(outfile)
-                            outF<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time<<endl;
-                        else
-                            std::cout<<"\t"<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time <<endl;
-                }else {
+                            Q0F = (float)Q0/32768;
+                            Q1F = (float)Q1/32768;
+                            Q2F = (float)Q2/32768;
+                            Q3F = (float)Q3/32768;
+
+                            quaternion = {Q0F,Q1F,Q2F,Q3F};
+                            qua_max = max(Q0F,max(Q1F,max(Q2F,Q3F)));
+                            if(outfile)
+                                outF<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time<<endl;
+                            else
+                                std::cout<<"\t"<<quaternion[0]<<"\t"<<quaternion[1]<<"\t"<<quaternion[2]<<"\t"<<quaternion[3]<<"\t"<< now_time <<endl;   
+                        }
+                        cout << 100*error_num/sum_num <<"%"<<endl;
+                        input.erase(0,start_flag+11);        
+                }else{
                     if(input.length()>=start_flag+11)
                         input.erase(0,start_flag+1);
                     else
