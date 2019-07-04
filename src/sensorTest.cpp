@@ -46,14 +46,17 @@ int main(const int agrc, char** argv){
     int sensors_can_opned_num=0;
     for(int i=0;i<NUM_SENSORS;++i){
         int ret = imuVec[i].devOpen(imuPath[i]);
-        // imuVec[i].outToFile(imuOutPath[i]);
+        imuVec[i].outToFile(imuOutPath[i]);
         imuVec_opened[i] = ret;
     }   
 
     for(int i=0;i<NUM_SENSORS;++i){
         tids[i] = thread(imuRead,&imuVec[i]);
-        tids[i].join(); 
     }
+    for(int i=0;i<NUM_SENSORS;++i){
+        tids[i].join();
+    }
+         
        
     return 0;
 }
